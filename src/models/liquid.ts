@@ -33,7 +33,7 @@ export default class Liquid {
 
     display = (p: p5) => {
         p.noStroke()
-        p.fill(50)
+        p.fill(0, 0, 0, 255 * this.c)
         p.rect(this.x, this.y, this.w, this.h)
     }
 }
