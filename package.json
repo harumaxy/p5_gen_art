@@ -6,14 +6,15 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/dat.gui": "^0.7.5",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
     "@types/p5": "^0.9.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "dat.gui": "^0.7.6",
     "p5": "^0.10.2",
     "react": "^16.12.0",
-    "react-dat-gui": "^4.0.0",
     "react-dom": "^16.12.0",
     "react-p5": "^1.1.8",
     "react-p5-wrapper": "^2.0.0",
@@ -21,7 +22,8 @@
     "react-scripts": "3.3.0",
     "styled-components": "^4.4.1",
     "styled-reset": "^4.0.8",
-    "typescript": "~3.7.2"
+    "typescript": "~3.7.2",
+    "unstated-next": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
