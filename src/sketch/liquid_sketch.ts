@@ -1,16 +1,24 @@
 import p5, { Vector } from 'p5'
 import Particle from '../models/particle'
+import Liquid from '../models/liquid'
 
-export const sketch = (p: p5) => {
+export const liquid_sketch = (p: p5) => {
     let particles: Particle[] = []
-    const gravity_acc = p.createVector(0, 0.2)
-    const wind = p.createVector(0.1, 0)
+    let liquid: Liquid
+    let gravity_acc = p.createVector(0, 0.1)
 
     p.setup = () => {
         p.createCanvas(p.windowWidth, p.windowHeight)
         for (let i = 0; i < 5; i++) {
             particles.push(new Particle(p.random(0, p.width), 0, p, 5))
         }
+
+        liquid = new Liquid({
+            y: p.height / 2,
+            w: p.width,
+            h: p.height,
+            c: 0.2
+        })
     }
 
     p.draw = () => {
@@ -19,12 +27,20 @@ export const sketch = (p: p5) => {
 
         // particlesの物理処理
         particles.forEach(particle => {
+            // 重力
             particle.applyForce(gravity_acc.copy().mult(particle.mass))
-            particle.applyForce(wind)
+
+            if (liquid.isContaines(particle)) {
+                const dragForce = liquid.calculateDrag(particle)
+                particle.applyForce(dragForce)
+            }
+
             particle.update()
             particle.display(p)
             particle.edge(p)
         })
+
+        liquid.display(p)
     }
 
     p.mousePressed = () => {
