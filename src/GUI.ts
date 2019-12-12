@@ -5,12 +5,13 @@ import { useState, useMemo, useEffect } from 'react'
 export enum SKETCH_TYPE {
     default = 'default',
     attract = 'attract',
-    liquid = 'liquid'
+    liquid = 'liquid',
+    vehicle = 'vehicle'
 }
 
 const GUIContainer = createContainer(() => {
     const gui = useMemo(() => new dat.GUI(), [])
-    const [sketchType, setSketchType] = useState(SKETCH_TYPE.default)
+    const [sketchType, setSketchType] = useState(SKETCH_TYPE.vehicle)
 
     console.log('gui')
 
@@ -19,7 +20,8 @@ const GUIContainer = createContainer(() => {
         gui.add({ sketch: sketchType }, 'sketch', {
             default: SKETCH_TYPE.default,
             attract: SKETCH_TYPE.attract,
-            liquid: SKETCH_TYPE.liquid
+            liquid: SKETCH_TYPE.liquid,
+            vehicle: SKETCH_TYPE.vehicle
 
             // eslint-disable-next-line react-hooks/exhaustive-deps
         }).onChange(newSketch => {

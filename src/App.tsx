@@ -6,9 +6,10 @@ import GUIContainer, { SKETCH_TYPE } from './GUI'
 import { sketch as default_sketch } from './sketch/sketch'
 import { attract_sketch } from './sketch/attract_sketch'
 import { liquid_sketch } from './sketch/liquid_sketch'
+import { vehicle_sketch } from './sketch/vehicle_sketch'
 
 const App = () => {
-    const { sketchType, gui } = GUIContainer.useContainer()
+    let { sketchType, gui } = GUIContainer.useContainer()
     return (
         <>
             {sketchType === SKETCH_TYPE.default && (
@@ -19,6 +20,9 @@ const App = () => {
             )}
             {sketchType === SKETCH_TYPE.liquid && (
                 <P5Wrapper sketch={liquid_sketch} />
+            )}
+            {sketchType === SKETCH_TYPE.vehicle && (
+                <P5Wrapper sketch={vehicle_sketch} />
             )}
         </>
     )
