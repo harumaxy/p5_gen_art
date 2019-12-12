@@ -8,7 +8,7 @@ import { attract_sketch } from './sketch/attract_sketch'
 import { liquid_sketch } from './sketch/liquid_sketch'
 
 const App = () => {
-    const { sketchType } = GUIContainer.useContainer()
+    const { sketchType, gui } = GUIContainer.useContainer()
     return (
         <>
             {sketchType === SKETCH_TYPE.default && (
