@@ -12,7 +12,7 @@ export const vehicle_sketch = (p: p5) => {
         p.background(51)
 
         const target = p.createVector(p.mouseX, p.mouseY)
-        vehicle.seek(target)
+        vehicle.arrive(target, p)
         vehicle.update()
         vehicle.display(p)
     }
