@@ -24,7 +24,7 @@ const GUIContainer = createContainer(() => {
         }).onChange(newSketch => setSketchType(newSketch))
     }, [])
 
-    return { sketchType }
+    return { sketchType, gui }
 })
 
 export default GUIContainer
