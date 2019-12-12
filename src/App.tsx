@@ -12,7 +12,7 @@ const App = () => {
     return (
         <>
             {sketchType === SKETCH_TYPE.default && (
-                <P5Wrapper sketch={default_sketch} />
+                <P5Wrapper sketch={default_sketch} gui={gui} />
             )}
             {sketchType === SKETCH_TYPE.attract && (
                 <P5Wrapper sketch={attract_sketch} />
