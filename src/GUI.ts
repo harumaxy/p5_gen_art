@@ -6,12 +6,13 @@ export enum SKETCH_TYPE {
     default = 'default',
     attract = 'attract',
     liquid = 'liquid',
-    vehicle = 'vehicle'
+    vehicle = 'vehicle',
+    flowForce = 'flowForce'
 }
 
 const GUIContainer = createContainer(() => {
     const gui = useMemo(() => new dat.GUI(), [])
-    const [sketchType, setSketchType] = useState(SKETCH_TYPE.vehicle)
+    const [sketchType, setSketchType] = useState(SKETCH_TYPE.flowForce)
 
     console.log('gui')
 
@@ -21,7 +22,8 @@ const GUIContainer = createContainer(() => {
             default: SKETCH_TYPE.default,
             attract: SKETCH_TYPE.attract,
             liquid: SKETCH_TYPE.liquid,
-            vehicle: SKETCH_TYPE.vehicle
+            vehicle: SKETCH_TYPE.vehicle,
+            flowForce: SKETCH_TYPE.flowForce
 
             // eslint-disable-next-line react-hooks/exhaustive-deps
         }).onChange(newSketch => {
