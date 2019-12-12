@@ -26,6 +26,12 @@ export const flow_forth_sketch = (p: p5) => {
         flow = new FlowField(p, p.width / 20)
     }
     p.draw = () => {
+        if (p.round(p.random(0, 1)) == 1) {
+            addVehicle(p.width, p.random(0, p.height))
+        } else {
+            addVehicle(p.random(0, p.width), 0)
+        }
+
         if (p.mouseIsPressed) {
             const gap = 50
             let offset = -100
