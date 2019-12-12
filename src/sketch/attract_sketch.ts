@@ -39,7 +39,7 @@ export const attract_sketch = (p: p5) => {
             const attractionForce = attractor.calculateAttraction(particle, p)
             particle.applyForce(attractionForce)
             particle.update()
-            particle.edge(p)
+            particle.edge(p, 0.5)
         })
 
         particles.filter(el => el.vel.x < 0).forEach(el => el.display(p))
