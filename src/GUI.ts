@@ -15,16 +15,26 @@ const GUIContainer = createContainer(() => {
     console.log('gui')
 
     useEffect(() => {
+        refreshGUI(gui)
         gui.add({ sketch: sketchType }, 'sketch', {
             default: SKETCH_TYPE.default,
             attract: SKETCH_TYPE.attract,
             liquid: SKETCH_TYPE.liquid
 
             // eslint-disable-next-line react-hooks/exhaustive-deps
-        }).onChange(newSketch => setSketchType(newSketch))
+        }).onChange(newSketch => {
+            refreshGUI(gui)
+            setSketchType(newSketch)
+        })
     }, [])
 
     return { sketchType, gui }
 })
+
+const refreshGUI = (gui: dat.GUI) => {
+    gui.__controllers.forEach(c => {
+        if (c.property !== 'sketch') gui.remove(c)
+    })
+}
 
 export default GUIContainer
