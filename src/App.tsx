@@ -8,6 +8,7 @@ import { attract_sketch } from './sketch/attract_sketch'
 import { liquid_sketch } from './sketch/liquid_sketch'
 import { vehicle_sketch } from './sketch/vehicle_sketch'
 import { flow_forth_sketch } from './sketch/flow_force_sketch'
+import { separated_sketch } from './sketch/separated_sketch'
 
 const App = () => {
     let { sketchType, gui } = GUIContainer.useContainer()
@@ -27,6 +28,9 @@ const App = () => {
             )}
             {sketchType === SKETCH_TYPE.flowForce && (
                 <P5Wrapper sketch={flow_forth_sketch} />
+            )}
+            {sketchType === SKETCH_TYPE.separated && (
+                <P5Wrapper sketch={separated_sketch} />
             )}
         </>
     )
