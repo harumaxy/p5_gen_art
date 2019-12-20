@@ -15,6 +15,7 @@ export const separated_sketch = (p: p5) => {
         })
     }
     p.draw = () => {
+        p.background(51)
         particles.forEach(particle => {
             particle.seperate(particles)
             particle.update()
