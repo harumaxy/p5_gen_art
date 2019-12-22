@@ -6,7 +6,12 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    
+    env:
+      PROJECT_ID: ${{ secrets.PROJECT_ID }}
+      APPLICATION_CREDENTIALS:  ${{ secrets.GCP_CREDENTIALS }}
+      CLI: gsutil
+    
     steps:
     - name: checkout src
       uses: actions/checkout@v1
@@ -29,11 +34,12 @@ jobs:
             
     - name: deploy with gcloud
       uses: actions-hub/gcloud@master
-      env:
-        PROJECT_ID: ${{ secrets.PROJECT_ID }}
-        APPLICATION_CREDENTIALS:  ${{ secrets.GCP_CREDENTIALS }}
-        CLI: gsutil
       with:
         args: rsync -d -R build gs://max-portfolio8821/build
+        
+    - name: set Access Control List
+      uses: actions-hub/gcloud@master
+      with:
+        args: gsutil acl ch -u AllUsers:R gs://max-portfolio8821/build
 
   
