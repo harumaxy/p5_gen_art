@@ -43,6 +43,6 @@ jobs:
       env:
         CLI: gsutil
       with:
-        args: acl ch -u AllUsers:R gs://max-portfolio8821/build
+        args: acl ch -r -u AllUsers:R gs://max-portfolio8821/build
 
   
