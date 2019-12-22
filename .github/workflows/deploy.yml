@@ -35,6 +35,6 @@ jobs:
         APPLICATION_CREDENTIALS:  ${{ secrets.GCP_CREDENTIALS }}
         CLI: gsutil
       with:
-        args: rsync -d -R <from> <to>
+        args: rsync -d -R build gs://max-portfolio8821/build
 
   
