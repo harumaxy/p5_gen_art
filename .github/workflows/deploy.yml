@@ -1,0 +1,40 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout src
+      uses: actions/checkout@v1
+      
+    - name: setup node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 'v13.x'
+    
+    - name: Cache Deps
+      uses: actions/cache@v1
+      with: 
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    
+    - run: yarn install
+    - run: yarn build
+
+      
+    - name: deploy with gcloud
+      uses: actions-hub/gcloud@master
+      env:
+        PROJECT_ID: ${{ secrets.PROJECT_ID }}
+        APPLICATION_CREDENTIALS:  ${{ secrets.GCP_CREDENTIALS }}
+        CLI: gsutil
+      with:
+        args: rsync -d -R <from> <to>
+
+  
