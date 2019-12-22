@@ -10,7 +10,6 @@ jobs:
     env:
       PROJECT_ID: ${{ secrets.PROJECT_ID }}
       APPLICATION_CREDENTIALS:  ${{ secrets.GCP_CREDENTIALS }}
-      CLI: gsutil
     
     steps:
     - name: checkout src
@@ -34,12 +33,16 @@ jobs:
             
     - name: deploy with gcloud
       uses: actions-hub/gcloud@master
+      env:
+        CLI: gsutil
       with:
         args: rsync -d -R build gs://max-portfolio8821/build
         
     - name: set Access Control List
       uses: actions-hub/gcloud@master
+      env:
+        CLI: gsutil
       with:
-        args: gsutil acl ch -u AllUsers:R gs://max-portfolio8821/build
+        args: acl ch -u AllUsers:R gs://max-portfolio8821/build
 
   
