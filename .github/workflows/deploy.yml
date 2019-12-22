@@ -24,12 +24,8 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-node-
     
-    - uses: borales/actions-yarn@v2.0.0
-      with:
-        cmd: install
-    - uses: borales/actions-yarn@v2.0.0
-      with:
-        cmd: build
+    - run: npm run build
+    - run: npm run install
       
     - name: deploy with gcloud
       uses: actions-hub/gcloud@master
