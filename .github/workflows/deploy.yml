@@ -36,13 +36,13 @@ jobs:
       env:
         CLI: gsutil
       with:
-        args: rsync -d -R build gs://max-portfolio8821/build
+        args: rsync -d -R build gs://max-portfolio8821/p5_gen_art
         
     - name: set Access Control List
       uses: actions-hub/gcloud@master
       env:
         CLI: gsutil
       with:
-        args: acl ch -r -u AllUsers:R gs://max-portfolio8821/build
+        args: acl ch -r -u AllUsers:R gs://max-portfolio8821/p5_gen_art
 
   
